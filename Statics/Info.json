@@ -1,0 +1,13 @@
+{
+  "Id": "PIStatsOverlay",
+  "DisplayName": "In-game Statistics Overlay",
+  "Author": "LittleYe233",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.21.5",
+  "Requirements": [],
+  "LoadAfter": [],
+  "AssemblyName": "PIStatsOverlay.dll",
+  "EntryMethod": "PIStatsOverlay.Main.Load",
+  "HomePage": "",
+  "Repository": ""
+}
