@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PIStatsOverlay.Utils
 {
-    public static class Logger
+    internal static class Logger
     {
         public static void Log(string msg, string scope = "")
         {

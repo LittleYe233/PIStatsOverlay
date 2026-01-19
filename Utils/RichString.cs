@@ -3,7 +3,7 @@ using System.Text;
 
 namespace PIStatsOverlay.Utils
 {
-    public abstract class RichStringPart
+    internal abstract class RichStringPart
     {
         /// <summary>
         /// The real string to be shown.
@@ -45,7 +45,7 @@ namespace PIStatsOverlay.Utils
         }
     }
 
-    public static class RichString
+    internal static class RichString
     {
         public static string Format(params RichStringPart[] parts)
         {

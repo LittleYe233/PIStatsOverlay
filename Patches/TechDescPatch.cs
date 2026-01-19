@@ -11,28 +11,9 @@ namespace PIStatsOverlay.Patches
         private static readonly string SCOPE = "TechDescPatch";
         private static readonly HashSet<string> modifiedIds = new HashSet<string>();
 
-        /// <summary>
-        /// Convert a stat to string with colored label, unless the stat value is zero.
-        /// </summary>
-        /// <param name="colorHex">Nullable</param>
-        /// <param name="statName"></param>
-        /// <param name="statValue"></param>
-        /// <param name="trailingSpace"></param>
-        /// <returns></returns>
-        private static string StatToStringUnlessZero(string colorHex, string statName, float statValue, bool trailingSpace = true)
-        {
-            if (statValue == 0f)
-                return string.Empty;
-            return RichString.Format(
-                new RichStringPart.NGUI(colorHex, statName), ": ",
-                statValue.ToString("+0.00;-0.00;0"),
-                trailingSpace ? " " : string.Empty
-            );
-        }
-
         [HarmonyPatch(nameof(SPDisease.GetEvolveCost))]
         [HarmonyPostfix]
-        public static void TechDescModify(Technology technology)
+        static void TechDescModify(Technology technology)
         {
             if (!Main.enabled) return;
 
@@ -44,30 +25,30 @@ namespace PIStatsOverlay.Patches
                         technology.description,
                         "\n",
                         // Three basic stats
-                        StatToStringUnlessZero("fd27e6", "INF", technology.changeToInfectiousness),
-                        StatToStringUnlessZero("fdfd57", "SEV", technology.changeToSeverity),
-                        StatToStringUnlessZero("9b2bd7", "LET", technology.changeToLethality),
+                        StatFormat.ToStringUnlessZero("fd27e6", "INF", technology.changeToInfectiousness),
+                        StatFormat.ToStringUnlessZero("fdfd57", "SEV", technology.changeToSeverity),
+                        StatFormat.ToStringUnlessZero("9b2bd7", "LET", technology.changeToLethality),
                         // Transmission stats
                         // Transportation
-                        StatToStringUnlessZero("00ffff", "Air", technology.changeToAirTransmission),
-                        StatToStringUnlessZero("00ffff", "Sea", technology.changeToSeaTransmission),
-                        StatToStringUnlessZero("00ffff", "Land", technology.changeToLandTransmission),
+                        StatFormat.ToStringUnlessZero("00ffff", "Air", technology.changeToAirTransmission),
+                        StatFormat.ToStringUnlessZero("00ffff", "Sea", technology.changeToSeaTransmission),
+                        StatFormat.ToStringUnlessZero("00ffff", "Land", technology.changeToLandTransmission),
                         // Country
-                        StatToStringUnlessZero("cc6633", "Wealthy", technology.changeToWealthy),
-                        StatToStringUnlessZero("cc6633", "Poor", technology.changeToPoverty),
-                        StatToStringUnlessZero("cc6633", "Urban", technology.changeToUrban),
-                        StatToStringUnlessZero("cc6633", "Rural", technology.changeToRural),
-                        StatToStringUnlessZero("cc6633", "Hot", technology.changeToHot),
-                        StatToStringUnlessZero("cc6633", "Cold", technology.changeToCold),
-                        StatToStringUnlessZero("cc6633", "Arid", technology.changeToArid),
-                        StatToStringUnlessZero("cc6633", "Humid", technology.changeToHumid),
+                        StatFormat.ToStringUnlessZero("cc6633", "Wealthy", technology.changeToWealthy),
+                        StatFormat.ToStringUnlessZero("cc6633", "Poor", technology.changeToPoverty),
+                        StatFormat.ToStringUnlessZero("cc6633", "Urban", technology.changeToUrban),
+                        StatFormat.ToStringUnlessZero("cc6633", "Rural", technology.changeToRural),
+                        StatFormat.ToStringUnlessZero("cc6633", "Hot", technology.changeToHot),
+                        StatFormat.ToStringUnlessZero("cc6633", "Cold", technology.changeToCold),
+                        StatFormat.ToStringUnlessZero("cc6633", "Arid", technology.changeToArid),
+                        StatFormat.ToStringUnlessZero("cc6633", "Humid", technology.changeToHumid),
                         // Others
-                        StatToStringUnlessZero("800000", "Corpse", technology.changeToCorpseTransmission),
+                        StatFormat.ToStringUnlessZero("800000", "Corpse", technology.changeToCorpseTransmission),
                         // Cure stats
-                        StatToStringUnlessZero("3366ff", "CureNeed", technology.changeToCureBaseMultiplier),
-                        StatToStringUnlessZero("3366ff", "CureSpeed", -technology.changeToResearchInefficiencyMultiplier),
+                        StatFormat.ToStringUnlessZero("3366ff", "CureNeed", technology.changeToCureBaseMultiplier),
+                        StatFormat.ToStringUnlessZero("3366ff", "CureSpeed", -technology.changeToResearchInefficiencyMultiplier),
                         // Other stats
-                        StatToStringUnlessZero(null, "Mutation", technology.changeToMutation)
+                        StatFormat.ToStringUnlessZero(null, "Mutation", technology.changeToMutation)
                     );
                     modifiedIds.Add(technology.id);
                     Logger.Log($"Modified description for Tech ID: {technology.id}", SCOPE);
@@ -84,7 +65,7 @@ namespace PIStatsOverlay.Patches
         /// </summary>
         [HarmonyPatch(nameof(SPDisease.Initialise))]
         [HarmonyPrefix]
-        public static void PatchInit()
+        static void PatchInit()
         {
             modifiedIds.Clear();
         }

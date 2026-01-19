@@ -1,6 +1,9 @@
 ﻿
 using UnityModManagerNet;
+using UnityEngine;
 using System.Reflection;
+using PIStatsOverlay.Objects;
+using PIStatsOverlay.Patches;
 
 namespace PIStatsOverlay
 {
@@ -12,6 +15,9 @@ namespace PIStatsOverlay
         /// </summary>
         public static bool enabled = true;
         public static UnityModManager.ModEntry modEntry;
+        // Static members for other methods
+        private static GameObject overlayObj;
+        public static DiseaseStats diseaseStats = new DiseaseStats();
 
         static bool Load(UnityModManager.ModEntry entry)
         {
@@ -29,11 +35,26 @@ namespace PIStatsOverlay
 
         static bool OnToggle(UnityModManager.ModEntry entry, bool value)
         {
-            if (value)
-            {
-                /// TODO: reload settings from local
-            }
             enabled = value;
+            if (enabled)
+            {
+                // Activate overlay object
+                if (overlayObj == null)
+                {
+                    overlayObj = new GameObject("PIStatsOverlay_OverlayObject");
+                    Object.DontDestroyOnLoad(overlayObj);
+                    overlayObj.AddComponent<StatsOverlay>();
+                }
+                overlayObj.SetActive(true);
+            }
+            else
+            {
+                // Deactivate overlay object
+                if (overlayObj != null)
+                {
+                    overlayObj.SetActive(false);
+                }
+            }
             modEntry.Logger.Log("enabled = " + enabled);
             // Always returns true to allow toggling
             return true;
