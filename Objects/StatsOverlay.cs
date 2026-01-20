@@ -31,8 +31,8 @@ namespace PIStatsOverlay.Objects
                 StatFormat.ToString(null, Main.localizer.Localize("INF"), Main.diseaseStats.infectiousness, "\n"),
                 StatFormat.ToString(null, Main.localizer.Localize("SEV"), Main.diseaseStats.severity, "\n"),
                 StatFormat.ToString(null, Main.localizer.Localize("LET"), Main.diseaseStats.lethality, "\n"),
-                StatFormat.ToString(null, Main.localizer.Localize("CureNeed"), Main.diseaseStats.cureRequirement, "\n", "+0.00E+0;-0.00E+0;0"),
-                StatFormat.ToString(null, Main.localizer.Localize("CureSpd"), Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.00E+0;-0.00E+0;0"),
+                StatFormat.ToString(null, Main.localizer.Localize("CureNeed"), Main.diseaseStats.cureRequirement, "\n", "+0.000E+0;-0.000E+0;0"),
+                StatFormat.ToString(null, Main.localizer.Localize("CureSpd"), Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.000E+0;-0.000E+0;0"),
                 StatFormat.ToString(null, Main.localizer.Localize("CureDays"), Main.diseaseStats.cureDaysRemaining, "\n", string.Empty),
                 StatFormat.ToString(null, Main.localizer.Localize("MutCnt"), Main.diseaseStats.mutationCounter, "\n"),
                 StatFormat.ToString(null, Main.localizer.Localize("MutTrig"), Main.diseaseStats.mutationTrigger, "\n")
@@ -56,9 +56,9 @@ namespace PIStatsOverlay.Objects
             //
             //////////////////////////////////////////////
 
-            float topMargin = .3f * Screen.height;
+            float topMargin = .32f * Screen.height;
             float rightMargin = 10f * scale;
-            float width = 190f * scale;
+            float width = 210f * scale;
             float height = 100f * scale;
             float x = Screen.width - rightMargin - width;
             float y = topMargin;

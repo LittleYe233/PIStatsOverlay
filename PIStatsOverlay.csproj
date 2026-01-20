@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="Objects\StatsOverlay.cs" />
+    <Compile Include="Patches\CureProgressPatch.cs" />
     <Compile Include="Patches\DiseaseStatsPatch.cs" />
     <Compile Include="Patches\TechDescPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scripts\package.ps1" />
     <None Include="Statics\Info.json" />
   </ItemGroup>
   <ItemGroup>
@@ -88,7 +90,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>start XCOPY /Y /R "$(TargetPath)" "D:\SteamLibrary\steamapps\common\PlagueInc\Mods\$(ProjectName)"
-start XCOPY /Y /R "$(ProjectDir)\bin\Debug\I18N.DotNet.dll" "D:\SteamLibrary\steamapps\common\PlagueInc\Mods\$(ProjectName)"
-start XCOPY /Y /R "$(ProjectDir)\Statics\Info.json" "D:\SteamLibrary\steamapps\common\PlagueInc\Mods\$(ProjectName)"</PostBuildEvent>
+start XCOPY /Y /R "$(ProjectDir)$(OutDir)I18N.DotNet.dll" "D:\SteamLibrary\steamapps\common\PlagueInc\Mods\$(ProjectName)"
+start XCOPY /Y /R "$(ProjectDir)Statics\Info.json" "D:\SteamLibrary\steamapps\common\PlagueInc\Mods\$(ProjectName)"
+PowerShell "$(ProjectDir)Scripts\package.ps1" -configuration "$(Configuration)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
