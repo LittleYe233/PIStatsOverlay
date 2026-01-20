@@ -8,6 +8,6 @@
   "LoadAfter": [],
   "AssemblyName": "PIStatsOverlay.dll",
   "EntryMethod": "PIStatsOverlay.Main.Load",
-  "HomePage": "",
+  "HomePage": "https://www.nexusmods.com/plagueincevolved/mods/14",
   "Repository": "https://github.com/LittleYe233/PIStatsOverlay"
 }
