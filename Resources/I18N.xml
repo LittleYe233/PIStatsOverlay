@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<I18N>
+	<Entry>
+		<Key>INF</Key>
+		<Value lang="zh-Hans">传染</Value>
+	</Entry>
+	<Entry>
+		<Key>SEV</Key>
+		<Value lang="zh-Hans">严重</Value>
+	</Entry>
+	<Entry>
+		<Key>LET</Key>
+		<Value lang="zh-Hans">致死</Value>
+	</Entry>
+	<Entry>
+		<Key>Air</Key>
+		<Value lang="zh-Hans">空传</Value>
+	</Entry>
+	<Entry>
+		<Key>Sea</Key>
+		<Value lang="zh-Hans">水传</Value>
+	</Entry>
+	<Entry>
+		<Key>Land</Key>
+		<Value lang="zh-Hans">陆传</Value>
+	</Entry>
+	<Entry>
+		<Key>Wealthy</Key>
+		<Value lang="zh-Hans">富裕</Value>
+	</Entry>
+	<Entry>
+		<Key>Poor</Key>
+		<Value lang="zh-Hans">贫困</Value>
+	</Entry>
+	<Entry>
+		<Key>Urban</Key>
+		<Value lang="zh-Hans">城市</Value>
+	</Entry>
+	<Entry>
+		<Key>Rural</Key>
+		<Value lang="zh-Hans">乡村</Value>
+	</Entry>
+	<Entry>
+		<Key>Hot</Key>
+		<Value lang="zh-Hans">炎热</Value>
+	</Entry>
+	<Entry>
+		<Key>Cold</Key>
+		<Value lang="zh-Hans">寒冷</Value>
+	</Entry>
+	<Entry>
+		<Key>Arid</Key>
+		<Value lang="zh-Hans">干燥</Value>
+	</Entry>
+	<Entry>
+		<Key>Humid</Key>
+		<Value lang="zh-Hans">湿润</Value>
+	</Entry>
+	<Entry>
+		<Key>Corpse</Key>
+		<Value lang="zh-Hans">尸传</Value>
+	</Entry>
+	<Entry>
+		<Key>CureNeedMult</Key>
+		<Value lang="zh-Hans">解药需求倍率</Value>
+	</Entry>
+	<Entry>
+		<Key>CureSpdMult</Key>
+		<Value lang="zh-Hans">解药速度倍率</Value>
+	</Entry>
+	<Entry>
+		<Key>Mutation</Key>
+		<Value lang="zh-Hans">突变</Value>
+	</Entry>
+	<Entry>
+		<Key>CureNeed</Key>
+		<Value lang="zh-Hans">解药需求</Value>
+	</Entry>
+	<Entry>
+		<Key>CureSpd</Key>
+		<Value lang="zh-Hans">解药速度</Value>
+	</Entry>
+	<Entry>
+		<Key>CureDays</Key>
+		<Value lang="zh-Hans">解药天数</Value>
+	</Entry>
+	<Entry>
+		<Key>MutCnt</Key>
+		<Value lang="zh-Hans">突变进度</Value>
+	</Entry>
+	<Entry>
+		<Key>MutTrig</Key>
+		<Value lang="zh-Hans">突变需求</Value>
+	</Entry>
+</I18N>

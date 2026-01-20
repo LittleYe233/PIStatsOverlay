@@ -28,14 +28,14 @@ namespace PIStatsOverlay.Objects
         private string GetStatsString()
         {
             return RichString.Format(
-                StatFormat.ToString(null, "INF", Main.diseaseStats.infectiousness, "\n"),
-                StatFormat.ToString(null, "SEV", Main.diseaseStats.severity, "\n"),
-                StatFormat.ToString(null, "LET", Main.diseaseStats.lethality, "\n"),
-                StatFormat.ToString(null, "CureNeed", Main.diseaseStats.cureRequirement, "\n", "+0.00E+0;-0.00E+0;0"),
-                StatFormat.ToString(null, "CureSpeed", Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.00E+0;-0.00E+0;0"),
-                StatFormat.ToString(null, "CureDays", Main.diseaseStats.cureDaysRemaining, "\n", string.Empty),
-                StatFormat.ToString(null, "MutCnt", Main.diseaseStats.mutationCounter, "\n"),
-                StatFormat.ToString(null, "MutTrig", Main.diseaseStats.mutationTrigger, "\n")
+                StatFormat.ToString(null, Main.localizer.Localize("INF"), Main.diseaseStats.infectiousness, "\n"),
+                StatFormat.ToString(null, Main.localizer.Localize("SEV"), Main.diseaseStats.severity, "\n"),
+                StatFormat.ToString(null, Main.localizer.Localize("LET"), Main.diseaseStats.lethality, "\n"),
+                StatFormat.ToString(null, Main.localizer.Localize("CureNeed"), Main.diseaseStats.cureRequirement, "\n", "+0.00E+0;-0.00E+0;0"),
+                StatFormat.ToString(null, Main.localizer.Localize("CureSpd"), Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.00E+0;-0.00E+0;0"),
+                StatFormat.ToString(null, Main.localizer.Localize("CureDays"), Main.diseaseStats.cureDaysRemaining, "\n", string.Empty),
+                StatFormat.ToString(null, Main.localizer.Localize("MutCnt"), Main.diseaseStats.mutationCounter, "\n"),
+                StatFormat.ToString(null, Main.localizer.Localize("MutTrig"), Main.diseaseStats.mutationTrigger, "\n")
             );
         }
 
@@ -55,7 +55,14 @@ namespace PIStatsOverlay.Objects
             // *--------------------------------------*
             //
             //////////////////////////////////////////////
-            GUI.Label(new Rect(10, 50, 300, 100), GetStatsString(), textStyle);
+
+            float topMargin = .3f * Screen.height;
+            float rightMargin = 10f * scale;
+            float width = 190f * scale;
+            float height = 100f * scale;
+            float x = Screen.width - rightMargin - width;
+            float y = topMargin;
+            GUI.Label(new Rect(x, y, width, height), GetStatsString(), textStyle);
         }
     }
 }
