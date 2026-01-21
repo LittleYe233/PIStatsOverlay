@@ -40,6 +40,7 @@ namespace PIStatsOverlay
             [Draw("Cure days remaining", DrawType.Toggle)] public bool ShowCureDaysRemaining = true;
             // mutation counter + mutation trigger
             [Draw("Mutation progress", DrawType.Toggle)] public bool ShowMutationProgress = true;
+            [Draw("Score", DrawType.Toggle)] public bool ShowScore = true;
         }
 
         [Draw(DrawType.PopupList)] public Languages Language = Languages.English;
@@ -89,6 +90,8 @@ namespace PIStatsOverlay
         // Static members for other methods
         private static GameObject overlayObj;
         public static DiseaseStats diseaseStats = new DiseaseStats();
+        public static long gameScore = -1;  // await filled by method
+        public static int gameDays = -1;    // await filled by method
 
         static bool Load(UnityModManager.ModEntry entry)
         {

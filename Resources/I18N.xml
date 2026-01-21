@@ -92,4 +92,8 @@
 		<Key>MutTrig</Key>
 		<Value lang="zh-Hans">突变需求</Value>
 	</Entry>
+	<Entry>
+		<Key>Score</Key>
+		<Value lang="zh-Hans">分数</Value>
+	</Entry>
 </I18N>

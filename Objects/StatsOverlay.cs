@@ -49,7 +49,8 @@ namespace PIStatsOverlay.Objects
                 Main.settings.SidebarStats.ShowEffectiveCureResearch ? StatFormat.ToString(null, Main.localizer.Localize("CureSpd"), Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.000E+0;-0.000E+0;0") : "",
                 Main.settings.SidebarStats.ShowCureDaysRemaining ? StatFormat.ToString(null, Main.localizer.Localize("CureDays"), Main.diseaseStats.cureDaysRemaining, "\n", string.Empty) : "",
                 Main.settings.SidebarStats.ShowMutationProgress ? StatFormat.ToString(null, Main.localizer.Localize("MutCnt"), Main.diseaseStats.mutationCounter, "\n") : "",
-                Main.settings.SidebarStats.ShowMutationProgress ? StatFormat.ToString(null, Main.localizer.Localize("MutTrig"), Main.diseaseStats.mutationTrigger, "\n") : ""
+                Main.settings.SidebarStats.ShowMutationProgress ? StatFormat.ToString(null, Main.localizer.Localize("MutTrig"), Main.diseaseStats.mutationTrigger, "\n") : "",
+                Main.settings.SidebarStats.ShowScore ? StatFormat.ToString(null, Main.localizer.Localize("Score"), Main.gameScore, "\n", string.Empty) : ""
             );
         }
 
