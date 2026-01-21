@@ -8,7 +8,7 @@ namespace PIStatsOverlay.Objects
         private GUIStyle textStyle;
 
         private void Start()
-        { 
+        {
             textStyle = new GUIStyle();
             textStyle.richText = true;
             textStyle.normal.textColor = Color.white;
@@ -27,15 +27,27 @@ namespace PIStatsOverlay.Objects
 
         private string GetStatsString()
         {
+            if (!Main.settings.ShowSidebarStats) return string.Empty;
             return RichString.Format(
-                StatFormat.ToString(null, Main.localizer.Localize("INF"), Main.diseaseStats.infectiousness, "\n"),
-                StatFormat.ToString(null, Main.localizer.Localize("SEV"), Main.diseaseStats.severity, "\n"),
-                StatFormat.ToString(null, Main.localizer.Localize("LET"), Main.diseaseStats.lethality, "\n"),
-                StatFormat.ToString(null, Main.localizer.Localize("CureNeed"), Main.diseaseStats.cureRequirement, "\n", "+0.000E+0;-0.000E+0;0"),
-                StatFormat.ToString(null, Main.localizer.Localize("CureSpd"), Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.000E+0;-0.000E+0;0"),
-                StatFormat.ToString(null, Main.localizer.Localize("CureDays"), Main.diseaseStats.cureDaysRemaining, "\n", string.Empty),
-                StatFormat.ToString(null, Main.localizer.Localize("MutCnt"), Main.diseaseStats.mutationCounter, "\n"),
-                StatFormat.ToString(null, Main.localizer.Localize("MutTrig"), Main.diseaseStats.mutationTrigger, "\n")
+                Main.settings.SidebarStats.ShowInfectiousness ? StatFormat.ToString(null, Main.localizer.Localize("INF"), Main.diseaseStats.infectiousness, "\n") : "",
+                Main.settings.SidebarStats.ShowSeverity ? StatFormat.ToString(null, Main.localizer.Localize("SEV"), Main.diseaseStats.severity, "\n") : "",
+                Main.settings.SidebarStats.ShowLethality ? StatFormat.ToString(null, Main.localizer.Localize("LET"), Main.diseaseStats.lethality, "\n") : "",
+                Main.settings.SidebarStats.ShowAirTransmission ? StatFormat.ToString(null, Main.localizer.Localize("Air"), Main.diseaseStats.airTransmission, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowSeaTransmission ? StatFormat.ToString(null, Main.localizer.Localize("Sea"), Main.diseaseStats.seaTransmission, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowLandTransmission ? StatFormat.ToString(null, Main.localizer.Localize("Land"), Main.diseaseStats.landTransmission, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowWealthy ? StatFormat.ToString(null, Main.localizer.Localize("Wealthy"), Main.diseaseStats.wealthy, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowPoverty ? StatFormat.ToString(null, Main.localizer.Localize("Poor"), Main.diseaseStats.poverty, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowUrban ? StatFormat.ToString(null, Main.localizer.Localize("Urban"), Main.diseaseStats.urban, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowRural ? StatFormat.ToString(null, Main.localizer.Localize("Rural"), Main.diseaseStats.rural, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowHot ? StatFormat.ToString(null, Main.localizer.Localize("Hot"), Main.diseaseStats.hot, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowCold ? StatFormat.ToString(null, Main.localizer.Localize("Cold"), Main.diseaseStats.cold, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowArid ? StatFormat.ToString(null, Main.localizer.Localize("Arid"), Main.diseaseStats.arid, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowHumid ? StatFormat.ToString(null, Main.localizer.Localize("Humid"), Main.diseaseStats.humid, "\n", "+0.0000;-0.0000;0") : "",
+                Main.settings.SidebarStats.ShowCureRequirement ? StatFormat.ToString(null, Main.localizer.Localize("CureNeed"), Main.diseaseStats.cureRequirement, "\n", "+0.000E+0;-0.000E+0;0") : "",
+                Main.settings.SidebarStats.ShowEffectiveCureResearch ? StatFormat.ToString(null, Main.localizer.Localize("CureSpd"), Main.diseaseStats.globalEffectiveCureResearchThisTurn, "\n", "+0.000E+0;-0.000E+0;0") : "",
+                Main.settings.SidebarStats.ShowCureDaysRemaining ? StatFormat.ToString(null, Main.localizer.Localize("CureDays"), Main.diseaseStats.cureDaysRemaining, "\n", string.Empty) : "",
+                Main.settings.SidebarStats.ShowMutationProgress ? StatFormat.ToString(null, Main.localizer.Localize("MutCnt"), Main.diseaseStats.mutationCounter, "\n") : "",
+                Main.settings.SidebarStats.ShowMutationProgress ? StatFormat.ToString(null, Main.localizer.Localize("MutTrig"), Main.diseaseStats.mutationTrigger, "\n") : ""
             );
         }
 

@@ -1,10 +1,10 @@
 ﻿
-using UnityModManagerNet;
-using UnityEngine;
-using System.Reflection;
+using I18N.DotNet;
 using PIStatsOverlay.Objects;
 using PIStatsOverlay.Patches;
-using I18N.DotNet;
+using System.Reflection;
+using UnityEngine;
+using UnityModManagerNet;
 
 namespace PIStatsOverlay
 {
@@ -19,7 +19,33 @@ namespace PIStatsOverlay
 
     public class Settings : UnityModManager.ModSettings, IDrawable
     {
+        public class SidebarStatsSettings
+        {
+            [Draw("Infectiousness", DrawType.Toggle)] public bool ShowInfectiousness = true;
+            [Draw("Severity", DrawType.Toggle)] public bool ShowSeverity = true;
+            [Draw("Lethality", DrawType.Toggle)] public bool ShowLethality = true;
+            [Draw("Air", DrawType.Toggle)] public bool ShowAirTransmission = true;
+            [Draw("Sea", DrawType.Toggle)] public bool ShowSeaTransmission = true;
+            [Draw("Land", DrawType.Toggle)] public bool ShowLandTransmission = true;
+            [Draw("Wealthy", DrawType.Toggle)] public bool ShowWealthy = true;
+            [Draw("Poverty", DrawType.Toggle)] public bool ShowPoverty = true;
+            [Draw("Urban", DrawType.Toggle)] public bool ShowUrban = true;
+            [Draw("Rural", DrawType.Toggle)] public bool ShowRural = true;
+            [Draw("Hot", DrawType.Toggle)] public bool ShowHot = true;
+            [Draw("Cold", DrawType.Toggle)] public bool ShowCold = true;
+            [Draw("Arid", DrawType.Toggle)] public bool ShowArid = true;
+            [Draw("Humid", DrawType.Toggle)] public bool ShowHumid = true;
+            [Draw("Cure requirement", DrawType.Toggle)] public bool ShowCureRequirement = true;
+            [Draw("Effective cure research", DrawType.Toggle)] public bool ShowEffectiveCureResearch = true;
+            [Draw("Cure days remaining", DrawType.Toggle)] public bool ShowCureDaysRemaining = true;
+            // mutation counter + mutation trigger
+            [Draw("Mutation progress", DrawType.Toggle)] public bool ShowMutationProgress = true;
+        }
+
         [Draw(DrawType.PopupList)] public Languages Language = Languages.English;
+        [Draw("Show sidebar statistics", DrawType.Toggle)] public bool ShowSidebarStats = true;
+        [Header("Sidebar Statistics"), Space(5)]
+        [Draw("", VisibleOn = "ShowSidebarStats|true")] public SidebarStatsSettings SidebarStats = new SidebarStatsSettings();
 
         public void Apply()
         {
@@ -114,10 +140,7 @@ namespace PIStatsOverlay
             else
             {
                 // Deactivate overlay object
-                if (overlayObj != null)
-                {
-                    overlayObj.SetActive(false);
-                }
+                overlayObj?.SetActive(false);
             }
             modEntry.Logger.Log("enabled = " + enabled);
             // Always returns true to allow toggling
