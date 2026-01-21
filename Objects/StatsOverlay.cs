@@ -16,11 +16,13 @@ namespace PIStatsOverlay.Objects
 
         private void OnGUI()
         {
+            /// TODO: Here the drawing condition should be enhanced to make sure
+            /// it is **only** shown when the game is in world map.
             if (CGameManager.game != null && CGameManager.game.CurrentGameState == IGame.GameState.InProgress)
             {
-                // Base font size is 20 at 1080p
+                // Base font size is 18 at 1080p
                 float scale = Screen.height / 1080f;
-                textStyle.fontSize = Mathf.Max(10, Mathf.RoundToInt(20 * scale));
+                textStyle.fontSize = Mathf.Max(10, Mathf.RoundToInt(18 * scale));
                 DrawStats(scale);
             }
         }
@@ -68,9 +70,9 @@ namespace PIStatsOverlay.Objects
             //
             //////////////////////////////////////////////
 
-            float topMargin = .32f * Screen.height;
-            float rightMargin = 10f * scale;
-            float width = 210f * scale;
+            float topMargin = .3f * Screen.height;
+            float rightMargin = 9f * scale;
+            float width = 189f * scale;
             float height = 100f * scale;
             float x = Screen.width - rightMargin - width;
             float y = topMargin;
