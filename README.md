@@ -71,6 +71,12 @@ PowerShell "$(ProjectDir)Scripts\package.ps1" -configuration "$(Configuration)"
 
 First three lines copy the built mod files to my local game, so if the game installation path is different on your machine, you should change it. However, it won't affect the built artifacts so you can still manually copy them later.
 
+## To-do list
+
+- Potential performance improvement.
+- Score calculation for outbreak mode.
+- Other statistics like world events, cure research budget, etc.
+
 ## Credits
 
 - [Unity Mod Manager](https://www.nexusmods.com/site/mods/21) by newman55
